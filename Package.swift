@@ -26,7 +26,14 @@ let package = Package(
     targets: [
         .target(
             name: "WaterfallGrid",
-            dependencies: []),
+            dependencies: [], 
+            swiftSettings: [
+                // Swift 인터페이스 검증 비활성화
+                .unsafeFlags(["-no-verify-emitted-module-interface"]),
+                // (선택) 인터페이스 생성 자체 비활성화 — 필요시 추가
+                // .unsafeFlags(["-enable-library-evolution", "NO"])
+            ]
+        ),
         .testTarget(
             name: "WaterfallGridTests",
             dependencies: ["WaterfallGrid"]),
